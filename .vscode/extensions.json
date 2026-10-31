@@ -5,8 +5,7 @@
     "editorconfig.editorconfig",
     "vitest.explorer",
     "prisma.prisma",
-    "bradlc.vscode-tailwindcss",
-    "ms-playwright.playwright"
+    "bradlc.vscode-tailwindcss"
   ],
   "unwantedRecommendations": ["dbaeumer.vscode-eslint"]
 }
