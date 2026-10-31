@@ -1,0 +1,2 @@
+# .gitattributes — todo arquivo de texto com fim de linha LF no repositório
+* text=auto eol=lf
