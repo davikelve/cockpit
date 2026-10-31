@@ -1,6 +1,6 @@
 # Cockpit
 
-Uma frase: o que o app faz e para quem (ex.: organizar o dia de trabalho de um tech lead).
+Organizar o dia de trabalho de um Tech Lead.
 
 > Em construção — Sprint 0 concluída (fundação do repositório). Roadmap nos milestones do GitHub.
 
