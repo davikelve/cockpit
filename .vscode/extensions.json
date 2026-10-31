@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "oxc.oxc-vscode",
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig",
+    "vitest.explorer",
+    "prisma.prisma",
+    "bradlc.vscode-tailwindcss",
+    "ms-playwright.playwright"
+  ],
+  "unwantedRecommendations": ["dbaeumer.vscode-eslint"]
+}
