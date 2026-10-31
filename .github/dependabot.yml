@@ -3,7 +3,16 @@ updates:
   - package-ecosystem: npm
     directory: /
     schedule: { interval: weekly }
-    groups: { nestjs: { patterns: ['@nestjs/*'] } }
+    groups:
+      nestjs: { patterns: ['@nestjs/*'] }
+      vitest: { patterns: ['vitest', '@vitest/*'] }
+    ignore:
+      # @types/node acompanha o Node do projeto (.nvmrc = 24), não o último Node lançado
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      # nest build precisa da API do compilador, que o TypeScript 7.0 não traz (volta no 7.1)
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
   - package-ecosystem: github-actions
     directory: /
     schedule: { interval: weekly }
