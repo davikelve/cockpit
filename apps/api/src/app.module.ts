@@ -5,6 +5,7 @@ import { LoggerModule } from 'nestjs-pino';
 import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER } from '@nestjs/core';
 import { ProblemDetailsFilter } from './common/filters/problem-details.filter.js';
+import { HealthModule } from './core/health/health.module.js';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ProblemDetailsFilter } from './common/filters/problem-details.filter.js
       },
     }),
     PrismaModule,
+    HealthModule,
   ],
   providers: [{ provide: APP_FILTER, useClass: ProblemDetailsFilter }],
 })
