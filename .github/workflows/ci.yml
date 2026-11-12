@@ -2,25 +2,25 @@ name: ci
 on:
   pull_request:
   push: { branches: [main] }
-services:
-  postgres:
-    image: postgres:17
-    env:
-      {
-        POSTGRES_USER: cockpit,
-        POSTGRES_PASSWORD: cockpit,
-        POSTGRES_DB: cockpit_test,
-      }
-    ports: ['5432:5432']
-    options: >-
-      --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-restries 10
-env:
-  DATABASE_URL: postgresql://cockpit:cockpit@localhost:5432/cockpit_test
-  JWT_ACESS_SECRET: ci-only-secret-with-at-least-32-chats!!
-  WEB_ORIGIN: http://localhost:5173
 jobs:
   build-test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          {
+            POSTGRES_USER: cockpit,
+            POSTGRES_PASSWORD: cockpit,
+            POSTGRES_DB: cockpit_test,
+          }
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://cockpit:cockpit@localhost:5432/cockpit_test
+      JWT_ACCESS_SECRET: ci-only-secret-with-at-least-32-chats!!
+      WEB_ORIGIN: http://localhost:5173
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
