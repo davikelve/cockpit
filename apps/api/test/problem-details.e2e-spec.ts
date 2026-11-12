@@ -2,7 +2,7 @@ import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
 import { createTestApp } from './utils/app.js';
 
-describe('GET /health (e2e)', () => {
+describe('GET /api/v1/nada (e2e)', () => {
   let app: INestApplication;
 
   beforeAll(async () => {

@@ -11,3 +11,29 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model User {
+  id              String @id @default(uuid()) @db.Uuid
+  email           String @unique
+  passwordHash    String
+  name            String
+  timezone        String @default("America/Fortaleza")
+  workdayMinutes  Int
+  createdAt       DateTime @default(now()) @db.Timestamptz()
+  updatedAt       DateTime @updatedAt @db.Timestamptz()
+
+  sessions  Session[]
+}
+
+model Session {
+  id String @id @default(uuid(7)) @db.Uuid
+  userId  String @db.Uuid
+  familyId String @db.Uuid // rotação: reuso de token revoga a família
+  tokenHash String @unique // nunca o token em claro
+  userAgent String?
+  expiresAt DateTime @db.Timestamptz()
+  revokedAt DateTime? @db.Timestamptz()
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  user  User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+}
